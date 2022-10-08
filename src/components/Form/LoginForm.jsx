@@ -7,6 +7,7 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import authService from "../../services/authService";
 
 export default function LoginForm(){
 	const [email, setEmail] = useState("");
@@ -14,11 +15,20 @@ export default function LoginForm(){
 	const [isDisabled, setIsDisabled] = useState(false);
 	const navigate = useNavigate();
 
-	function handleSubmit(e) {
+	async function handleSubmit(e) {
 		e.preventDefault();
 		console.log("email: ", email);
 		console.log("password: ", password);
 		setIsDisabled(true);
+		const userCredentials = {
+			email,
+			password
+		};
+		const userToken = await authService.login(userCredentials);
+		setIsDisabled(false); 
+		if(userToken.status === 200){
+			navigate("/products");
+		}
 	}
 
 	return(
