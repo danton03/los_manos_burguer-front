@@ -1,8 +1,11 @@
 import { Box, Heading, Image, Stack, VStack, Grid, Button } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 import logoImg from "../assets/images/logo.png";
 import Navbar from "../components/Navbar/Navbar";
 
 export default function HomePage(){
+	const navigate = useNavigate();
+
 	return(
 		<Box textAlign="center" fontSize="xl">
 			<Grid minH="100vh" p={3}>
@@ -22,7 +25,8 @@ export default function HomePage(){
 							Los Manos Burguer
 						</Heading>
 						<Button 
-							type="button" 
+							type="button"
+							onClick={() => navigate("/products")} 
 							color="white" 
 							fontFamily={"'Silkscreen', cursive"}
 							colorScheme={"orange"}
