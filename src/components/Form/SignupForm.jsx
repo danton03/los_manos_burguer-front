@@ -7,6 +7,7 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import authService from "../../services/authService";
 
 export default function SignupForm(){
 	const [name, setName] = useState("");
@@ -16,13 +17,26 @@ export default function SignupForm(){
 	const [isDisabled, setIsDisabled] = useState(false);
 	const navigate = useNavigate();
 
-	function handleSubmit(e) {
+	async function handleSubmit(e) {
 		e.preventDefault();
 		console.log("name: ", name);
 		console.log("email: ", email);
 		console.log("password: ", password);
 		console.log("confirmPassword: ", confirmPassword);
 		setIsDisabled(true);
+		const userData = {
+			name,
+			email,
+			password,
+			confirmPassword
+		};
+		const response = await authService.signup(userData);
+		setIsDisabled(false); 
+		console.log("response");
+		console.log(response.response.status);
+		if(response.status === 201){
+			navigate("/login");
+		}
 	}
 
 	return(
