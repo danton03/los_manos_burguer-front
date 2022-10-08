@@ -19,10 +19,6 @@ export default function SignupForm(){
 
 	async function handleSubmit(e) {
 		e.preventDefault();
-		console.log("name: ", name);
-		console.log("email: ", email);
-		console.log("password: ", password);
-		console.log("confirmPassword: ", confirmPassword);
 		setIsDisabled(true);
 		const userData = {
 			name,
@@ -50,7 +46,6 @@ export default function SignupForm(){
 					disabled={isDisabled}
 					focusBorderColor="orange.300"
 					borderColor="orange.400"
-					fontFamily={"'Silkscreen', cursive"}
 				/>
 				<Input 
 					type="email" 
@@ -60,7 +55,6 @@ export default function SignupForm(){
 					disabled={isDisabled}
 					focusBorderColor="orange.300"
 					borderColor="orange.400"
-					fontFamily={"'Silkscreen', cursive"}
 				/>
 				<Input 
 					type="password" 
@@ -70,7 +64,6 @@ export default function SignupForm(){
 					disabled={isDisabled}
 					focusBorderColor="orange.300"
 					borderColor="orange.400"
-					fontFamily={"'Silkscreen', cursive"}
 				/>
 				<Input 
 					type="password" 
@@ -80,7 +73,6 @@ export default function SignupForm(){
 					disabled={isDisabled}
 					focusBorderColor="orange.300"
 					borderColor="orange.400"
-					fontFamily={"'Silkscreen', cursive"}
 				/>
 				<Button 
 					type="submit"
