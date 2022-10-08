@@ -10,6 +10,7 @@ import customTheme from "./assets/styles/customTheme";
 import HomePage from "./pages/HomePage";
 import Error404Page from "./pages/Error404Page";
 import SignupPage from "./pages/SignupPage";
+import ProductsPage from "./pages/ProductsPage";
 
 function App() {
 	return (
@@ -19,6 +20,7 @@ function App() {
 					<Route  path="/" element={<HomePage />}/>
 					<Route  path="/login" element={<LoginPage />}/>
 					<Route  path="/signup" element={<SignupPage />}/>
+					<Route  path="/products" element={<ProductsPage />}/>
 					<Route  path="*" element={<Error404Page />}/>
 				</Routes>
 			</BrowserRouter>
