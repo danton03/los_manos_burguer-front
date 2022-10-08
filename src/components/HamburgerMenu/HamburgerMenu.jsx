@@ -41,6 +41,19 @@ export default function HamburgerMenu(){
 					</DrawerHeader>
 					<DrawerBody>
 						<VStack spacing={2}>
+							<Button
+								type="button"
+								background={"none"}
+								color={"orange.400"}
+								colorScheme={"orange"}
+								variant="ghost"
+								fontFamily={"'Silkscreen', cursive"}
+								w={"100%"}
+								onClick={() => navigate("/")}
+							>
+								Home
+							</Button>
+							
 							<Button 
 								type="button"
 								background={"none"}
@@ -65,19 +78,6 @@ export default function HamburgerMenu(){
 								onClick={() => navigate("/signup")}
 							>
 								Cadastrar-se
-							</Button>
-
-							<Button
-								type="button"
-								background={"none"}
-								color={"orange.400"}
-								colorScheme={"orange"}
-								variant="ghost"
-								fontFamily={"'Silkscreen', cursive"}
-								w={"100%"}
-								onClick={() => navigate("/")}
-							>
-								Home
 							</Button>
 						</VStack>
 					</DrawerBody>
