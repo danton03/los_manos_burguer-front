@@ -17,8 +17,6 @@ export default function LoginForm(){
 
 	async function handleSubmit(e) {
 		e.preventDefault();
-		console.log("email: ", email);
-		console.log("password: ", password);
 		setIsDisabled(true);
 		const userCredentials = {
 			email,
@@ -41,7 +39,6 @@ export default function LoginForm(){
 					disabled={isDisabled}
 					focusBorderColor="orange.300"
 					borderColor="orange.400"
-					fontFamily={"'Silkscreen', cursive"}
 				/>
 				<Input 
 					type="password" 
@@ -50,7 +47,6 @@ export default function LoginForm(){
 					disabled={isDisabled}
 					focusBorderColor="orange.300"
 					borderColor="orange.400"
-					fontFamily={"'Silkscreen', cursive"}
 				/>
 				<Button 
 					type="submit"
