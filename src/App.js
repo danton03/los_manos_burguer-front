@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import customTheme from "./assets/styles/customTheme";
+import HomePage from "./pages/HomePage";
 import Error404Page from "./pages/Error404Page";
 import SignupPage from "./pages/SignupPage";
 
@@ -15,6 +16,7 @@ function App() {
 		<ChakraProvider theme={customTheme}>
 			<BrowserRouter>
 				<Routes>
+					<Route  path="/" element={<HomePage />}/>
 					<Route  path="/login" element={<LoginPage />}/>
 					<Route  path="/signup" element={<SignupPage />}/>
 					<Route  path="*" element={<Error404Page />}/>
