@@ -1,18 +1,18 @@
 import { Box, Heading, Image, Stack, VStack, Grid } from "@chakra-ui/react";
-import { ColorModeSwitcher } from "../ColorModeSwitcher";
 import LoginForm from "../components/Form/LoginForm";
 import logoImg from "../assets/images/logo.png";
+import Navbar from "../components/Navbar/Navbar";
 
 export default function LoginPage(){
 	return(
 		<Box textAlign="center" fontSize="xl">
 			<Grid minH="100vh" p={3}>
-				<ColorModeSwitcher justifySelf="flex-end" />
+				<Navbar />
 				<VStack spacing={5}>
 					<Box maxW={140}>
 						<Image src={logoImg}/>
 					</Box>
-					<Stack>
+					<Stack spacing={6}>
 						<Heading 
 							as={"h2"} 
 							size="lg" 
