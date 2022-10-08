@@ -8,6 +8,7 @@ import {
 import LoginPage from "./pages/LoginPage";
 import customTheme from "./assets/styles/customTheme";
 import Error404Page from "./pages/Error404Page";
+import SignupPage from "./pages/SignupPage";
 
 function App() {
 	return (
@@ -15,6 +16,7 @@ function App() {
 			<BrowserRouter>
 				<Routes>
 					<Route  path="/login" element={<LoginPage />}/>
+					<Route  path="/signup" element={<SignupPage />}/>
 					<Route  path="*" element={<Error404Page />}/>
 				</Routes>
 			</BrowserRouter>
