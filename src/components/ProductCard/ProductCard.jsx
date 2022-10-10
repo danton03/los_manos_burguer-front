@@ -5,10 +5,10 @@ import {
 	Image,
 	useColorModeValue,
 } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 function ProductCard(props) {
-	//usar o id para requisitar infos do produto e carregar a página do produto
-	// eslint-disable-next-line no-unused-vars
+	const navigate = useNavigate();
 	const {id, name, imageUrl, description, price} = props;
 	return (
 		<Flex 
@@ -18,6 +18,7 @@ function ProductCard(props) {
 			alignItems="center" 
 			justifyContent="center" 
 			boxSizing="border-box"
+			onClick={() => navigate(`/product/${id}`)}
 		>
 			<Box
 				bg={useColorModeValue("white", "gray.800")}
@@ -44,10 +45,10 @@ function ProductCard(props) {
 							overflow="hidden"
 							textOverflow="ellipsis"
 							css={{
+								display: "-webkit-box",
 								"&": {
-									display: "-webkit-box",
-									"-webkit-line-clamp": "2",
-									"-webkit-box-orient": "vertical"
+									WebkitLineClamp: "2",
+									WebkitBoxOrient: "vertical"
 								}
 							}}
 						>
@@ -66,10 +67,10 @@ function ProductCard(props) {
 							overflow="hidden"
 							textOverflow="ellipsis"
 							css={{
+								display: "-webkit-box",
 								"&": {
-									display: "-webkit-box",
-									"-webkit-line-clamp": "2",
-									"-webkit-box-orient": "vertical"
+									WebkitLineClamp: "2",
+									WebkitBoxOrient: "vertical"
 								}
 							}}
 						>

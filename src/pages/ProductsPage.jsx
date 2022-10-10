@@ -18,8 +18,6 @@ export default function ProductsPage(){
 	function renderProducts() {
 		const categories = Object.keys(products);
 		return categories.map((category, index) => {
-			console.log("category: ", category);
-			console.log("products: ", products[category]);
 			return(
 				<VStack w={"100%"} key={index}>
 					<Heading 
