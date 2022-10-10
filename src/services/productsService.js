@@ -9,8 +9,18 @@ async function getProducts() {
 	}
 }
 
+async function getProductById(productId) {
+	try {
+		const response = await api.get(`/products/${productId}`);
+		return response.data;
+	} catch (error) {
+		console.log(error.response.status);
+	}
+}
+
 const productsService = {
-	getProducts
+	getProducts,
+	getProductById
 };
 
 export default productsService;

@@ -13,11 +13,13 @@ import SignupPage from "./pages/SignupPage";
 import ProductsPage from "./pages/ProductsPage";
 import UserContext from "./contexts/UserContext";
 import { useState } from "react";
+import ProductPage from "./pages/ProductPage";
 
 
 function App() {
 	const [ user, setUser ] = useState({});
 	const token = localStorage.getItem("token");
+	const [cart, setCart] = useState([]);
 	
 	if(user.token) {
 		localStorage.setItem("token", user.token);
@@ -28,7 +30,7 @@ function App() {
 	}
 	
 	return (
-		<UserContext.Provider value={{user, setUser}}>
+		<UserContext.Provider value={{user, setUser, cart, setCart}}>
 			<ChakraProvider theme={customTheme}>
 				<BrowserRouter>
 					<Routes>
@@ -36,7 +38,7 @@ function App() {
 						<Route path="/login" element={ !user.token ? <LoginPage /> : <Navigate to="/" replace/> } />
 						<Route path="/signup" element={ !user.token ? <SignupPage /> : <Navigate to="/" replace/> } />
 						<Route  path="/products" element={<ProductsPage />}/>
-						<Route  path="/products/:id" element={<ProductsPage />}/>
+						<Route  path="/products/:productId" element={<ProductPage />}/>
 						<Route  path="*" element={<Error404Page />}/>
 					</Routes>
 				</BrowserRouter>

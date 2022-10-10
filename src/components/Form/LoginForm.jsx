@@ -5,14 +5,16 @@ import {
 	VStack,
 	Link
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import UserContext from "../../contexts/UserContext";
 import authService from "../../services/authService";
 
 export default function LoginForm(){
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [isDisabled, setIsDisabled] = useState(false);
+	const { setUser } = useContext(UserContext);
 	const navigate = useNavigate();
 
 	async function handleSubmit(e) {
@@ -25,6 +27,7 @@ export default function LoginForm(){
 		const userToken = await authService.login(userCredentials);
 		setIsDisabled(false); 
 		if(userToken.status === 200){
+			setUser(userToken.data);
 			navigate("/products");
 		}
 	}

@@ -14,11 +14,11 @@ function ProductCard(props) {
 		<Flex 
 			ml={6} 
 			maxW={125}
-			minH={50.65} 
+			minW={"8.6875rem"} 
 			alignItems="center" 
 			justifyContent="center" 
 			boxSizing="border-box"
-			onClick={() => navigate(`/product/${id}`)}
+			onClick={() => navigate(`/products/${id}`)}
 		>
 			<Box
 				bg={useColorModeValue("white", "gray.800")}
@@ -32,7 +32,9 @@ function ProductCard(props) {
 					src={imageUrl}
 					alt={`Picture of ${name}`}
 					roundedTop="lg"
-					minW={"8.6875rem"}
+					h={"5.125rem"}
+					w={"8.6875rem"}
+					objectFit={"cover"}
 				/>
 
 				<Box p={"3"}>

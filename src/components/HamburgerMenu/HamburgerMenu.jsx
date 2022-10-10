@@ -15,8 +15,14 @@ import UserContext from "../../contexts/UserContext";
 
 export default function HamburgerMenu(){
 	const { isOpen, onOpen, onClose } = useDisclosure();
-	const { user } = useContext(UserContext);
+	const { user, setUser } = useContext(UserContext);
 	const navigate = useNavigate();
+
+	function handleLogout(){
+		setUser({});
+		localStorage.removeItem("token");
+	}
+
 	return(
 		<>
 			<Button
@@ -29,7 +35,7 @@ export default function HamburgerMenu(){
 				color={"orange.400"}
 				colorScheme={"orange"}
 			>
-				<ion-icon name="menu" stlyle={{color: "orange"}} size="large"></ion-icon>
+				<ion-icon name="menu" size="large"></ion-icon>
 			</Button>
 			<Drawer placement={"right"} onClose={onClose} isOpen={isOpen}>
 				<DrawerOverlay />
@@ -56,8 +62,19 @@ export default function HamburgerMenu(){
 							>
 								Home
 							</Button>
-							{ user ? 
-								null 
+							{ user.token? 
+								<Button 
+									type="button"
+									background={"none"}
+									color={"orange.400"}
+									colorScheme={"orange"}
+									variant="ghost"
+									fontFamily={"'Silkscreen', cursive"}
+									w={"100%"}
+									onClick={handleLogout}
+								>
+									Sair
+								</Button> 
 								:<> 
 									<Button 
 										type="button"
