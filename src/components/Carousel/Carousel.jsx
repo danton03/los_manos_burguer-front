@@ -88,14 +88,13 @@ export default function Carousel({ products }) {
 			<Box minW={"80vw"}>
 				<Slider {...settings}>
 					{products.map((product) => {
-						// eslint-disable-next-line no-unused-vars
 						const {id, name, imageUrl, description, price} = product;
 						return (
 							<ProductCard 
 								key={id} 
 								id={id} 
 								name={name} 
-								imageUrl={"https://imgcloud.com.br/share/BfRzjaX7EqYoLvcI"}
+								imageUrl={imageUrl}
 								description={description} 
 								price={price} 
 							/>
