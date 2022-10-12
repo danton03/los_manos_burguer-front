@@ -1,0 +1,43 @@
+.slick-prev,
+.slick-next {
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 25px;
+  height: 25px;
+  transform: initial;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-size: 25px;
+}
+
+.slick-prev {
+  left: 0;
+}
+
+.slick-next {
+  right: 0;
+}
+
+.slick-track{
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100% !important;
+  max-width: 640px;
+  padding-right: 100px;
+  margin: 0;
+}
+
+
+@media(max-width: 480px) {
+
+  .slick-next,
+  .slick-prev {
+    font-size: 1.25rem;
+  }
+}

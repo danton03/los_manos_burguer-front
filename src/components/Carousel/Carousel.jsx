@@ -4,6 +4,7 @@ import ProductCard from "../ProductCard/ProductCard";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import "./styles.css";
 
 function SampleNextArrow(props) {
 	const { className, style, onClick } = props;
@@ -48,10 +49,10 @@ const settings = {
 	infinite: false,
 	speed: 500,
 	centerMode: false,
-	slidesToShow: 6,
 	visualViewport: Flex,
-	variableWidth: true,
+	//variableWidth: true,
 	adaptiveHeight: true,
+	slidesToShow: 4,
 	slidesToScroll: 4,
 	nextArrow: <SampleNextArrow />,
 	prevArrow: <SamplePrevArrow />,
@@ -86,7 +87,7 @@ const settings = {
 
 export default function Carousel({ products }) {
 	return (
-		<Flex w={"85vw"} maxW={"90vw"} p={3} boxSizing={"border-box"} justifyContent={"center"} alignSelf={"flex-start"}>
+		<Flex w={"94vw"} maxW={"94vw"} p={3} boxSizing={"border-box"} alignSelf={"flex-start"}>
 			<Box minW={"80vw"}>
 				<Slider {...settings}>
 					{products.map((product) => {
