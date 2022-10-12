@@ -62,6 +62,19 @@ export default function HamburgerMenu(){
 							>
 								Home
 							</Button>
+
+							<Button
+								type="button"
+								background={"none"}
+								color={"orange.400"}
+								colorScheme={"orange"}
+								variant="ghost"
+								fontFamily={"'Silkscreen', cursive"}
+								w={"100%"}
+								onClick={() => navigate("/products")}
+							>
+								Cardápio
+							</Button>
 							{ user.token? 
 								<Button 
 									type="button"
