@@ -15,6 +15,8 @@ import UserContext from "./contexts/UserContext";
 import { useState } from "react";
 import ProductPage from "./pages/ProductPage";
 import CartPage from "./pages/CartPage";
+import CheckoutPage from "./pages/CheckoutPage";
+import { CheckoutErrorToast } from "./components/CheckoutErrorToast/CheckoutErrorToast";
 
 
 function App() {
@@ -41,6 +43,12 @@ function App() {
 						<Route  path="/products" element={<ProductsPage />}/>
 						<Route  path="/products/:productId" element={<ProductPage />}/>
 						<Route  path="/cart" element={<CartPage />}/>
+						<Route  path="/checkout" element={ cart.length ? <CheckoutPage /> : (
+							<>
+								<Navigate to="/" replace/> 
+								<CheckoutErrorToast />
+							</>
+						)}/>
 						<Route  path="*" element={<Error404Page />}/>
 					</Routes>
 				</BrowserRouter>

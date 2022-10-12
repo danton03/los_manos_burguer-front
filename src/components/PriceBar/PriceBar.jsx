@@ -51,7 +51,7 @@ export default function PriceBar() {
 			</Flex>
 			<Button 
 				type="button" 
-				onClick={() => navigate("/ckeckout")}
+				onClick={() => navigate("/checkout")}
 				colorScheme={"orange"}
 				fontFamily={"'Silkscreen', cursive"}
 			>
