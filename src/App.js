@@ -14,6 +14,7 @@ import ProductsPage from "./pages/ProductsPage";
 import UserContext from "./contexts/UserContext";
 import { useState } from "react";
 import ProductPage from "./pages/ProductPage";
+import CartPage from "./pages/CartPage";
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
 						<Route path="/signup" element={ !user.token ? <SignupPage /> : <Navigate to="/" replace/> } />
 						<Route  path="/products" element={<ProductsPage />}/>
 						<Route  path="/products/:productId" element={<ProductPage />}/>
+						<Route  path="/cart" element={<CartPage />}/>
 						<Route  path="*" element={<Error404Page />}/>
 					</Routes>
 				</BrowserRouter>

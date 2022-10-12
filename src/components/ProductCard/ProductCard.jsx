@@ -32,7 +32,7 @@ function ProductCard(props) {
 					src={imageUrl}
 					alt={`Picture of ${name}`}
 					roundedTop="lg"
-					h={"5.125rem"}
+					h={"6.875rem"}
 					w={"8.6875rem"}
 					objectFit={"cover"}
 				/>
