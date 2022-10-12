@@ -2,6 +2,7 @@ import { Center, Flex, Heading, Text, VStack } from "@chakra-ui/react";
 import { useContext } from "react";
 import CartProduct from "../components/CartProduct/CartProduct";
 import Navbar from "../components/Navbar/Navbar";
+import PriceBar from "../components/PriceBar/PriceBar";
 import UserContext from "../contexts/UserContext";
 
 export default function CartPage(){
@@ -39,6 +40,7 @@ export default function CartPage(){
 							</Center>
 					}
 				</VStack>
+				{ cart.length? <PriceBar /> : null}
 			</VStack>
 		</Flex>
 	);
