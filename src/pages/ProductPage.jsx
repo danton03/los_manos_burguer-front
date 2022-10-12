@@ -13,7 +13,8 @@ import {
 	StackDivider,
 	useColorModeValue,
 	Center,
-	Spinner
+	Spinner,
+	useToast
 } from "@chakra-ui/react";
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -26,16 +27,15 @@ export default function ProductPage() {
 	const { productId } = useParams(null);
 	const [product, setProduct] = useState();
 	const [counter, setCounter] = useState(1);
-	console.log(cart);
-	/* 
-  const navigate = useNavigate(); */
+	const toast = useToast();
+
+	/*const navigate = useNavigate(); */
 	useEffect(() => {
 		async function getProducts() {
 			const productData = await productsService.getProductById(productId);
 			setProduct(productData);
 		}
 		getProducts();
-		console.log(cart);
 	},[]);
 
 	function decrement() {
@@ -44,13 +44,42 @@ export default function ProductPage() {
 		}
 	}
 
+	function showSuccessToast() {
+		return toast({
+			title: "Adicionado ao carrinho",
+			status: "success",
+			position: "top-right",
+			duration: 4000,
+			isClosable: true,
+		});
+	}
+
 	function handleAddToCart() {
-		const productToAdd = {
-			name: product.name, 
-			price: product.price,
-			quantity: counter
-		};
-		setCart([...cart, productToAdd]);
+		let productAlreadyInCart = false;
+		
+		const newCart = cart.map((item) => {
+			if(item.id === product.id){
+				productAlreadyInCart = true; 
+				return {...item, amount: item.amount + counter};
+			}
+			return item;
+		});
+		
+		if(!productAlreadyInCart){
+			const productToAdd = {
+				id: product.id,
+				name: product.name,
+				imageUrl:  product.imageUrl,
+				price: product.price,
+				amount: counter
+			};
+
+			setCart([...cart, productToAdd]);
+			return showSuccessToast();
+		}
+	
+		setCart(newCart);
+		return showSuccessToast();
 	}
 
 	return (
@@ -151,7 +180,7 @@ export default function ProductPage() {
 										>
 											Descrição
 										</Text>
-										<Text fontSize={"lg"}>
+										<Text fontSize={"lg"} width={"100%"}>
 											{product.description}
 										</Text>
 									</VStack>

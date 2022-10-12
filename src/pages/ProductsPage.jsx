@@ -35,7 +35,7 @@ export default function ProductsPage(){
 
 	return(
 		<Flex flexDirection={"column"} boxSizing={"border-box"}>
-			<VStack minH="100vh" padding={3} boxSizing={"border-box"}>
+			<VStack minH="100vh" padding={3} spacing={4} boxSizing={"border-box"}>
 				<Navbar />
 				<VStack spacing={5} boxSizing={"border-box"} pb={6}>
 					{
