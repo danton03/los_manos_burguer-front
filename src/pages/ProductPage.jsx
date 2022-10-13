@@ -34,6 +34,7 @@ export default function ProductPage() {
 		async function getProducts() {
 			const productData = await productsService.getProductById(productId);
 			setProduct(productData);
+			console.log(productData);
 		}
 		getProducts();
 	},[]);
@@ -71,7 +72,8 @@ export default function ProductPage() {
 				name: product.name,
 				imageUrl:  product.imageUrl,
 				price: product.price,
-				amount: counter
+				amount: counter,
+				category: product.category
 			};
 
 			setCart([...cart, productToAdd]);

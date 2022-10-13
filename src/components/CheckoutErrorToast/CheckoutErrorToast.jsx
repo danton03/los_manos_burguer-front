@@ -7,7 +7,7 @@ export function CheckoutErrorToast() {
 			title: "Carrinho vazio!",
 			description: "Adicione itens ao carrinho para acessar a página de finalizar pedido",
 			status: "error",
-			duration: 9000,
+			duration: 5000,
 			isClosable: true,
 		})
 	);

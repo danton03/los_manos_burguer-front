@@ -1,4 +1,4 @@
-import { Button, Flex, Heading, Text } from "@chakra-ui/react";
+import { Button, Flex, Heading, Text, useColorModeValue } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
@@ -31,7 +31,7 @@ export default function PriceBar() {
 			p={"0 1.25rem"}
 			boxSizing={"border-box"}
 			zIndex={"1"}
-			backgroundColor={"white"}
+			backgroundColor={useColorModeValue("white", "gray.900")}
 		>
 			<Flex className="total" flexDirection={"column"}>
 				<Heading 
