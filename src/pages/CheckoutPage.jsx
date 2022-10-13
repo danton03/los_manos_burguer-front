@@ -258,7 +258,7 @@ export default function CheckoutPage() {
 											required
 										/>
 										<Input 
-											type="text" 
+											type="number" 
 											placeholder="Número da casa/apartamento"
 											value={houseNumber}
 											onChange={e => setHouseNumber(e.target.value)} 
@@ -278,6 +278,7 @@ export default function CheckoutPage() {
 								value={name}
 								onChange={e => setName(e.target.value)} 
 								focusBorderColor={"orange.400"}
+								maxW={"37.5rem"}
 							/>
 							{selectedCity !== "" && selectedDistrict !== ""  && deliveryOption === "Delivery"?
 								<>
