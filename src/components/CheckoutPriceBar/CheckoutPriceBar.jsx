@@ -68,7 +68,7 @@ export default function CheckoutPriceBar(props) {
 				drinks += `${product.amount} - ${product.name}\n`;
 			}
 			else if (product.category === "Adicional") {
-				drinks += `${product.amount} - ${product.name}\n`;
+				additional += `${product.amount} - ${product.name}\n`;
 			}
 		});
 
@@ -104,7 +104,7 @@ ${deliveryInformation}*Cliente*: ${name}\n
 				justifyContent={"space-between"}
 				alignItems={"center"}
 				w={"100%"}
-				h={"4.75rem"}
+				h={"5.25rem"}
 				p={"0 0.75rem"}
 				boxSizing={"border-box"}
 				backgroundColor={useColorModeValue("orange.50", "gray.900")}
@@ -146,7 +146,7 @@ ${deliveryInformation}*Cliente*: ${name}\n
 							fontSize={"lg"}
 							fontFamily={"'Silkscreen', cursive"}
 						>
-							{"Total"}
+							{"Total:"}
 						</Heading>
 						<Text 
 							as={"p"}

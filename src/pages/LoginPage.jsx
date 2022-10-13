@@ -1,14 +1,14 @@
-import { Box, Heading, Image, Stack, VStack, Grid } from "@chakra-ui/react";
+import { Box, Heading, Image, Stack, VStack, Flex, Center } from "@chakra-ui/react";
 import LoginForm from "../components/Form/LoginForm";
 import logoImg from "../assets/images/logo.png";
 import Navbar from "../components/Navbar/Navbar";
 
 export default function LoginPage(){
 	return(
-		<Box textAlign="center" fontSize="xl">
-			<Grid minH="100vh" p={3}>
+		<Flex flexDirection={"column"} boxSizing={"border-box"} >
+			<VStack minH="100vh" padding={3} boxSizing={"border-box"} spacing={5} >
 				<Navbar />
-				<VStack spacing={5}>
+				<Center gap={5} flexDirection="column" minH={"86vh"} justifyContent={"center"}>
 					<Box maxW={140}>
 						<Image src={logoImg}/>
 					</Box>
@@ -18,14 +18,15 @@ export default function LoginPage(){
 							size="lg" 
 							colorScheme={"orange"} 
 							color="orange.500"
+							textAlign={"center"}
 							fontFamily={"'Silkscreen', cursive"}
 						>
 							Login
 						</Heading>
 						<LoginForm />
 					</Stack>
-				</VStack>
-			</Grid>
-		</Box>
+				</Center>
+			</VStack>
+		</Flex>
 	);
 }
