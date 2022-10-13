@@ -76,15 +76,16 @@ export default function CheckoutPriceBar(props) {
 		const drinksList = drinks !== "" ? `\n*Bebida*:\n${drinks}`: "";
 		const additionalList = additional !== "" ? `\n*Adicional*:\n${additional}`: "";
 		const productsOfOrder = hamburgersList+drinksList+additionalList;
-		const addressToDelivery = deliveryOption === "Delivery" ? `*Endereço*: \n${address}, ${houseNumber}, ${selectedDistrict}, ${selectedCity}\n`: "";
-		const deliveryFee = deliveryOption === "Delivery" ? `*Frete*: ${((deliveryPrice/100).toFixed(2)).replace(".",",")}\n`: "";
+		const addressToDelivery = deliveryOption === "Delivery" ? `\n*Endereço*: \n${address}, ${houseNumber}, ${selectedDistrict}, ${selectedCity}`: "";
+		const deliveryFee = deliveryOption === "Delivery" ? `\n*Frete*: ${((deliveryPrice/100).toFixed(2)).replace(".",",")}`: "";
 		const deliveryInformation = addressToDelivery+deliveryFee;
 		const order = `Olá, gostaria de fazer o meu pedido:
 ${productsOfOrder}
-*Tipo de entrega*: ${deliveryOption}\n
-${deliveryInformation}*Cliente*: ${name}\n
+*Cliente*: ${name}
+\n*Tipo de entrega*: ${deliveryOption}
+${deliveryInformation}
 *Total*: ${calculateTotal()}
-    `;
+`;
 		return order;
 	}
 

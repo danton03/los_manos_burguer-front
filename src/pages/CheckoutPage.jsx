@@ -114,25 +114,33 @@ export default function CheckoutPage() {
 	}
 
 	function renderDistricts(){
-		const districts = locations.filter((city) => city.name === selectedCity)[0].Districts;
-		return(
-			districts.map((district) => {
-				return (
-					<option 
-						key={district.id} 
-						value={district.name}
-					>
-						{district.name}
-					</option>
-				);
-			})
-		);
+		if(selectedCity !== ""){
+			const cityInformation = locations.find((city) => city.name === selectedCity);
+			const districts = cityInformation.Districts;
+			console.log(districts);
+			return(
+				districts.map((district) => {
+					console.log(district);
+					return (
+						<option 
+							key={district.id} 
+							value={district.name}
+						>
+							{district.name}
+						</option>
+					);
+				})
+			);
+		}
 	}
 
 	function returnDeliveryPrice() {
-		const districts = locations.filter((city) => city.name === selectedCity)[0].Districts;
-		const district = districts.filter(district => district.name = selectedDistrict);
-		return district[0].Delivery.price;
+		if(selectedCity !== "" && selectedDistrict !== ""){
+			const districts = locations.find((city) => city.name === selectedCity).Districts;
+			const district = districts.find(district => district.name === selectedDistrict);
+			return district.Delivery.price;
+		}
+		return 0;
 	}
   
 	return(
@@ -188,7 +196,7 @@ export default function CheckoutPage() {
 									<Select 
 										placeholder='Selecione a cidade'
 										value={selectedCity}
-										onChange={e => setSelectedCity(e.target.value)}
+										onChange={e => {setSelectedCity(e.target.value); setSelectedDistrict("");}}
 										w={"100%"}
 										maxW={"37.5rem"}
 										alignSelf={"flex-start"}
@@ -209,7 +217,7 @@ export default function CheckoutPage() {
 									</Select>
 
 									{
-										selectedCity !== ""?
+										selectedCity !== "" ?
 											<Select 
 												placeholder='Selecione a cidade'
 												value={selectedDistrict}
