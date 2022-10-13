@@ -1,5 +1,5 @@
 /* eslint-disable no-inner-declarations */
-import { Center, Flex, Heading, Input, Radio, RadioGroup, Select, Spinner, Stack, Text, VStack } from "@chakra-ui/react";
+import { Center, Flex, Heading, Input, Radio, RadioGroup, Select, Spinner, Stack, Text, useColorModeValue, VStack } from "@chakra-ui/react";
 import { useContext, useEffect, useState } from "react";
 import Navbar from "../components/Navbar/Navbar";
 import deliveryService from "../services/deliveryLocationsService";
@@ -46,7 +46,14 @@ export default function CheckoutPage() {
 		const additional = cart.filter((product)=>product.category === "Adicional");
 
 		return(
-			<Flex flexDirection={"column"} gap={"0.75rem"}>
+			<Flex 
+				flexDirection={"column"} 
+				gap={"0.75rem"} 
+				backgroundColor={useColorModeValue("orange.100", "gray.500")} 
+				rounded="md" 
+				p={"0.75rem"} 
+				maxW={"37.5rem"}
+			>
 				{hamburgers.length?
 					<>
 						<Heading
@@ -153,7 +160,6 @@ export default function CheckoutPage() {
 							fontSize={"lg"} 
 							fontFamily={"'Silkscreen', cursive"}
 							alignSelf={"flex-start"}
-							pb={6}
 						>
             Finalizar o pedido
 						</Heading>
@@ -161,8 +167,7 @@ export default function CheckoutPage() {
 						<Flex width={"100%"} flexDirection={"column"} gap={"0.75rem"}>
 							<Heading
 								as={"h3"} 
-								fontSize={"md"} 
-								fontFamily={"'Silkscreen', cursive"}
+								fontSize={"lg"} 
 								alignSelf={"flex-start"}
 							>
                 Resumo do pedido
@@ -172,8 +177,7 @@ export default function CheckoutPage() {
 						</Flex>
 						<Heading
 							as={"h3"} 
-							fontSize={"md"} 
-							fontFamily={"'Silkscreen', cursive"}
+							fontSize={"lg"} 
 							alignSelf={"flex-start"}
 							pt={3}
 						>
@@ -271,7 +275,7 @@ export default function CheckoutPage() {
 								: null
 						}
 						
-						<VStack spacing={3} pt={2} w={"100%"} alignItems={"flex-start"}>
+						<VStack spacing={3} w={"100%"} alignItems={"flex-start"}>
 							<Input 
 								type="text" 
 								placeholder="Digite o seu nome"
@@ -287,6 +291,7 @@ export default function CheckoutPage() {
 										fontSize={"md"} 
 										fontFamily={"'Silkscreen', cursive"}
 										alignSelf={"flex-start"}
+										pt={3}
 									>
                     Valor da entrega:
 									</Heading>

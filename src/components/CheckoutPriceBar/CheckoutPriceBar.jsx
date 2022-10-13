@@ -76,15 +76,15 @@ export default function CheckoutPriceBar(props) {
 		const drinksList = drinks !== "" ? `\n*Bebida*:\n${drinks}`: "";
 		const additionalList = additional !== "" ? `\n*Adicional*:\n${additional}`: "";
 		const productsOfOrder = hamburgersList+drinksList+additionalList;
-		const addressToDelivery = deliveryOption === "Delivery" ? `\n*Endereço*: \n${address}, ${houseNumber}, ${selectedDistrict}, ${selectedCity}`: "";
-		const deliveryFee = deliveryOption === "Delivery" ? `\n*Frete*: ${((deliveryPrice/100).toFixed(2)).replace(".",",")}`: "";
+		const addressToDelivery = deliveryOption === "Delivery" ? `\n*Endereço*:\n${address}, N° ${houseNumber}, Bairro ${selectedDistrict}, ${selectedCity}`: "";
+		const deliveryFee = deliveryOption === "Delivery" ? `\n\n*Frete*: ${((deliveryPrice/100).toFixed(2)).replace(".",",")}`: "";
 		const deliveryInformation = addressToDelivery+deliveryFee;
 		const order = `Olá, gostaria de fazer o meu pedido:
 ${productsOfOrder}
 *Cliente*: ${name}
 \n*Tipo de entrega*: ${deliveryOption}
 ${deliveryInformation}
-*Total*: ${calculateTotal()}
+*\n\nTotal*: ${calculateTotal()}
 `;
 		return order;
 	}
@@ -109,6 +109,7 @@ ${deliveryInformation}
 				p={"0 0.75rem"}
 				boxSizing={"border-box"}
 				backgroundColor={useColorModeValue("orange.50", "gray.900")}
+				zIndeX={1}
 			>
 				<VStack>
 					<Flex 
