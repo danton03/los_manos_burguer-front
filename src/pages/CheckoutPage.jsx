@@ -276,28 +276,31 @@ export default function CheckoutPage() {
 						}
 						
 						<VStack spacing={3} w={"100%"} alignItems={"flex-start"}>
-							<Input 
-								type="text" 
-								placeholder="Digite o seu nome"
-								value={name}
-								onChange={e => setName(e.target.value)} 
-								focusBorderColor={"orange.400"}
-								maxW={"37.5rem"}
-							/>
+							<Flex as={"form"} width={"100%"}>
+								<Input 
+									type="text" 
+									placeholder="Digite o seu nome"
+									value={name}
+									onChange={e => setName(e.target.value)} 
+									focusBorderColor={"orange.400"}
+									maxW={"37.5rem"}
+									required
+								/>
+							</Flex>
 							{selectedCity !== "" && selectedDistrict !== ""  && deliveryOption === "Delivery"?
 								<>
 									<Heading
 										as={"h3"} 
-										fontSize={"md"} 
-										fontFamily={"'Silkscreen', cursive"}
+										fontSize={"lg"} 
+										// fontFamily={"'Silkscreen', cursive"}
 										alignSelf={"flex-start"}
-										pt={3}
+										pt={4}
 									>
                     Valor da entrega:
 									</Heading>
 									<Text 
 										as={"p"}
-										fontSize={"lg"}
+										fontSize={"md"}
 										fontWeight={"medium"}
 									>
 										{`R$ ${((returnDeliveryPrice()/100).toFixed(2)).replace(".",",")}`}

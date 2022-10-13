@@ -36,7 +36,8 @@ export default function CheckoutPriceBar(props) {
 	}
 
 	function openModal() {
-		const condition = deliveryOption === "Delivery" && (selectedDistrict === "" || address.length < 1 || houseNumber.length < 1 || name.length < 1); 
+		console.log("name", name);
+		const condition = deliveryOption === "Delivery" && (selectedDistrict === "" || address.length < 1 || houseNumber.length < 1) || name.length < 1; 
 		if (condition) {
 			return InvalidAddressErrorToast();
 		}
@@ -77,14 +78,14 @@ export default function CheckoutPriceBar(props) {
 		const additionalList = additional !== "" ? `\n*Adicional*:\n${additional}`: "";
 		const productsOfOrder = hamburgersList+drinksList+additionalList;
 		const addressToDelivery = deliveryOption === "Delivery" ? `\n*Endereço*:\n${address}, N° ${houseNumber}, Bairro ${selectedDistrict}, ${selectedCity}`: "";
-		const deliveryFee = deliveryOption === "Delivery" ? `\n\n*Frete*: ${((deliveryPrice/100).toFixed(2)).replace(".",",")}`: "";
+		const deliveryFee = deliveryOption === "Delivery" ? `\n\n*Frete*: R$ ${((deliveryPrice/100).toFixed(2)).replace(".",",")}\n`: "";
 		const deliveryInformation = addressToDelivery+deliveryFee;
 		const order = `Olá, gostaria de fazer o meu pedido:
 ${productsOfOrder}
 *Cliente*: ${name}
 \n*Tipo de entrega*: ${deliveryOption}
 ${deliveryInformation}
-*\n\nTotal*: ${calculateTotal()}
+*Total*: R$ ${calculateTotal()}
 `;
 		return order;
 	}
@@ -93,6 +94,7 @@ ${deliveryInformation}
 		const order = generateOrder();
 		const encodedMessage = encodeURIComponent(order);
 		window.open(`https://wa.me/5586988660071?text=${encodedMessage}`,"_blank");
+		onClose();
 	}
 	
 	return(
@@ -109,7 +111,7 @@ ${deliveryInformation}
 				p={"0 0.75rem"}
 				boxSizing={"border-box"}
 				backgroundColor={useColorModeValue("orange.50", "gray.900")}
-				zIndeX={1}
+				zIndex={1}
 			>
 				<VStack>
 					<Flex 
